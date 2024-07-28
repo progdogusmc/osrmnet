@@ -12,10 +12,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3935E5C6-16E4-4700-8E5B-ADA4A62F498F}</ProjectGuid>
-    <TargetFramework>net6</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>osrmnet</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -105,7 +106,7 @@
       </WarningLevel>
       <PreprocessorDefinitions>WIN32;_WIN32;_WINDOWS;NDEBUG;_LARGEFILE_SOURCE;_FILE_OFFSET_BITS=64;NOMINMAX;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;BOOST_LIB_DIAGNOSTIC;_USE_MATH_DEFINES;_WIN32_WINNT=0x0501;XML_STATIC;BOOST_SPIRIT_USE_PHOENIX_V3;BOOST_RESULT_OF_USE_DECLTYPE;BOOST_FILESYSTEM_NO_DEPRECATED;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>libosrm\include;libosrm\third_party;libosrm\osrm-deps\include;libosrm\third_party\flatbuffers\include;libosrm\third_party\variant\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libosrm\third_party\rapidjson\include;libosrm\include;libosrm\third_party;libosrm\osrm-deps\include;libosrm\third_party\flatbuffers\include;libosrm\third_party\variant\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
@@ -141,6 +142,7 @@
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="EngineConfig.h" />
     <ClInclude Include="Bearing.h" />
+    <ClInclude Include="LevrumRouter.h" />
     <ClInclude Include="Match\MatchParameters.h" />
     <ClInclude Include="Match\MatchResult.h" />
     <ClInclude Include="Match\MatchRoute.h" />
@@ -151,6 +153,8 @@
     <ClInclude Include="OSRM.h" />
     <ClInclude Include="OsrmException.h" />
     <ClInclude Include="OsrmFwdDecl.h" />
+    <ClInclude Include="LevrumOsrmRoutePosition.h" />
+    <ClInclude Include="OsrmRoutePosition.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Route\RouteParameters.h" />
@@ -169,6 +173,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BaseParameters.cpp" />
     <ClCompile Include="EngineConfig.cpp" />
+    <ClCompile Include="LevrumRouter.cpp" />
     <ClCompile Include="Match\MatchParameters.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\stdafx.h</PrecompiledHeaderFile>
@@ -202,6 +207,7 @@
     <ClCompile Include="OSRM.cpp" />
     <ClCompile Include="OsrmException.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="Router.cpp" />
     <ClCompile Include="Route\RouteParameters.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\stdafx.h</PrecompiledHeaderFile>
